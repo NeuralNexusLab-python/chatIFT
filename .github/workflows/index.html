@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chatIFT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* 深色背景 */
+            color: #fff; /* 白色文字 */
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1f1f1f;
+            padding: 10px 20px;
+        }
+        .header a {
+            color: #4caf50; /* 綠色連結 */
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .header a:hover {
+            text-decoration: underline;
+        }
+        .search-box {
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+        .embed-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+        }
+        .embed-frame {
+            width: 820px;
+            height: 650px;
+            border: 1px solid #555;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        p {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                // Get the current URL of the embedding page (parent page)
+                const parentUrl = window.top.location.href;
+                const projectId = new URL(parentUrl).hash.substring(1); // Extract hash after '#'
+
+                const iframe = document.querySelector('.embed-frame');
+                if (projectId) {
+                    iframe.src = `https://scratch.mit.edu/projects/${projectId}/embed/`;
+                } else {
+                    iframe.src = "https://scratch.mit.edu/projects/1051154324/embed/"; // Default project
+                }
+            } catch (error) {
+                console.error('Error accessing parent URL:', error);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <a href="https://scratch.mit.edu/projects/1051154324/" target="_blank">chatIFT</a>
+        <div class="search-box">
+            <div class="gcse-search"></div>
+        </div>
+        <a href="https://scratch.mit.edu/" target="_blank">Scratch</a>
+    </div>
+    <div class="embed-container">
+        <iframe 
+            class="embed-frame" 
+            src="https://scratch.mit.edu/projects/1051154324/embed/" 
+            allowtransparency="true" 
+            frameborder="0">
+        </iframe>
+    </div>
+    <p>
+        mail: service@chatift.com
+    </p>
+    <p>
+        &copy; 2025 chatIFT team. All rights reserved.
+    </p>
+</body>
+</html>
